@@ -1,0 +1,56 @@
+# phpstorm project files
+.idea
+
+# netbeans project files
+nbproject
+
+# zend studio for eclipse project files
+.buildpath
+.project
+.settings
+
+# windows thumbnail cache
+Thumbs.db
+
+# composer vendor dir
+/vendor
+
+# cubrid install dir
+/cubrid
+
+# composer itself is not needed
+composer.phar
+
+# Mac DS_Store Files
+.DS_Store
+
+# phpunit itself is not needed
+phpunit.phar
+# local phpunit config
+/phpunit.xml
+
+tests/_output/*
+tests/_support/_generated
+
+web/media
+
+# Yii temp directories
+web/assets/**
+runtime/**
+web/minify/**
+
+# Gulp
+package.json
+npm-debug.log
+node_modules/**
+
+# Components from node.js and composer
+components/jquery
+components/select2
+components/require.config.js
+components/require.css
+components/require.js
+components/require-built.js
+
+# Codeception
+tests/codeception/_support/_generated/*
