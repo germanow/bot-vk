@@ -21,7 +21,7 @@ class apiTest extends \Codeception\Test\Unit
     {
         $json = ['type' => 'confirmation', 'group_id' => '146639882'];
         $token_confirmation = '6e6e3549';
-        $this->tester->sendGET('/bot/callback', $json);
+        $this->tester->sendPOST('/bot/callback', $json);
         $this->tester->seeResponseCodeIs(200);
         $this->tester->seeResponseIsJson();
         $this->tester->seeResponseContains($token_confirmation);
@@ -32,7 +32,7 @@ class apiTest extends \Codeception\Test\Unit
     public function otherResponseIsOk()
     {
         $json = ['type' => 'notConfirmation', 'group_id' => '146639882'];
-        $this->tester->sendGET('/bot/callback', $json);
+        $this->tester->sendPOST('/bot/callback', $json);
         $this->tester->seeResponseCodeIs(200);
         $this->tester->seeResponseIsJson();
         $this->tester->seeResponseContains('ok');

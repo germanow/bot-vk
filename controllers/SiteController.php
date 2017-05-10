@@ -23,10 +23,6 @@ class SiteController extends Controller
                         'allow' => true,
                         'roles' => ['@']      
                     ],
-                    [
-                        'allow' => true,
-                        'ips' => ['127.0.0.1']      
-                    ]
                 ],      
             ],
         ];

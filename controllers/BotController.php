@@ -29,7 +29,7 @@ class BotController extends Controller
 
     public function actionCallback()
     {
-        $type = Yii::$app->request->get('type');
+        $type = Yii::$app->request->post('type');
         switch ($type){
             case 'confirmation':
                 return static::TOKEN_CONFIRMATION;
