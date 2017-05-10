@@ -16,13 +16,13 @@ class BotController extends Controller
     public function behaviors()
     {
         return [
-            [
-                'class' => 'yii\filters\ContentNegotiator',
-                'only' => ['callback'],
-                'formats' => [
-                    'application/json' => Yii::$app->response::FORMAT_JSON,
-                ],
-            ]
+//            [
+//                'class' => 'yii\filters\ContentNegotiator',
+//                'only' => ['callback'],
+//                'formats' => [
+//                    'application/json' => Yii::$app->response::FORMAT_JSON,
+//                ],
+//            ]
         ];
     }
 
