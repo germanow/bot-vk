@@ -3,7 +3,6 @@ modules:
     enabled:
         - PhpBrowser:
             url: 'http://bot-vk'
-        - \Helper\Acceptance
         - Yii2:
             part: orm
             entryScript: index-test.php

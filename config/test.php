@@ -10,7 +10,6 @@ $params = array_merge(
 $config = [
     'id' => 'bot-vk-tests',
     'basePath' => dirname(__DIR__), 
-    'controllerNamespace' => 'app\controllers\frontend',
     'language' => 'ru-RU',
     'components' => [
         'urlManager' => [
@@ -25,6 +24,9 @@ $config = [
         'request' => [
             'cookieValidationKey' => 'test',
             'enableCsrfValidation' => false,
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ]
             // but if you absolutely need it set cookie domain to localhost
             /*
             'csrfCookie' => [
