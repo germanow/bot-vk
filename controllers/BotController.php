@@ -15,10 +15,28 @@ class BotController extends Controller
     public function behaviors()
     {
         return [
-//            [
-//                'class' => 'yii\filters\ContentNegotiator',
-//                'only' => ['callback'],
-//            ]
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'only' => ['callback'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        //Проверка что запрос пришел от серверов vk
+                        'matchCallback' => function($rule, $action){
+                            $request = Yii::$app->request->getBodyParams();
+                            if(isset($request['secret'])){
+                                $secret = require(__DIR__ . '/../config/secretKey.php');
+                                if($request['secret'] == $secret){
+                                    return True;
+                                }
+                            }
+                        }
+                    ]
+                ],
+                'denyCallback' => function($rule, $action){
+                    throw new \yii\web\HttpException(403);
+                }
+            ],
         ];
     }
 
@@ -40,10 +58,7 @@ class BotController extends Controller
                 $response = $api->request('messages.send', ['user_id' => $msg['user_id'], 'message' => $reply]);
                 break;
             default:
-                return 'ok';
-                
-                
-           
+                return 'ok';     
        }
         
     }
