@@ -4,8 +4,52 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7caf4f4226098eb704574af2027f39f4",
+    "content-hash": "47be3bb43982bd2e95047326f3f37ae8",
     "packages": [
+        {
+            "name": "atehnix/vk-client",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/atehnix/vk-client.git",
+                "reference": "2648ee6cec961d5937a5c1ebfc12ddfd7bab00a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/atehnix/vk-client/zipball/2648ee6cec961d5937a5c1ebfc12ddfd7bab00a4",
+                "reference": "2648ee6cec961d5937a5c1ebfc12ddfd7bab00a4",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ATehnix\\VkClient\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "atehnix",
+                    "email": "atehnix@gmail.com"
+                }
+            ],
+            "description": "PHP client for Vk.com API",
+            "keywords": [
+                "api",
+                "client",
+                "php",
+                "vk",
+                "vk.com",
+                "vkontakte"
+            ],
+            "time": "2017-02-06T18:02:30+00:00"
+        },
         {
             "name": "bower-asset/bootstrap",
             "version": "v3.3.7",

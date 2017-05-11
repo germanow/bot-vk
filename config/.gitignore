@@ -1,3 +1,4 @@
 # Игнорируем локальные конфиги
 *-local.php
+token.php
 !.gitignore

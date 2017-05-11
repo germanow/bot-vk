@@ -5,7 +5,6 @@ namespace app\controllers;
 use Yii;
 use yii\rest\Controller;
 
-
 class BotController extends Controller
 {
     
@@ -19,9 +18,6 @@ class BotController extends Controller
 //            [
 //                'class' => 'yii\filters\ContentNegotiator',
 //                'only' => ['callback'],
-//                'formats' => [
-//                    'application/json' => Yii::$app->response::FORMAT_JSON,
-//                ],
 //            ]
         ];
     }
@@ -29,12 +25,23 @@ class BotController extends Controller
 
     public function actionCallback()
     {
-        $type = Yii::$app->request->post('type');
-        switch ($type){
+        $api = new \ATehnix\VkClient\Client();
+        $token = require(__DIR__ . '/../config/token.php');
+        $api->setDefaultToken($token);
+        
+        $request = Yii::$app->request->getBodyParams();
+        switch ($request['type']){
             case 'confirmation':
                 return static::TOKEN_CONFIRMATION;
+            case 'message_new':
+                echo 'ok';
+                $msg = $request['object'];
+                $reply = 'Привет!Я бот, и это всё, что я умею отвечать('; 
+                $response = $api->request('messages.send', ['user_id' => $msg['user_id'], 'message' => $reply]);
+                break;
             default:
                 return 'ok';
+                
                 
            
        }
