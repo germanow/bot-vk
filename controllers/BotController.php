@@ -25,7 +25,7 @@ class BotController extends Controller
                         'matchCallback' => function($rule, $action){
                             $request = Yii::$app->request->getBodyParams();
                             if(isset($request['secret'])){
-                                $secret = require(__DIR__ . '/../config/secretKey.php');
+                                $secret = require(Yii::getAlias('@app') . '/config/secretKey.php');
                                 if($request['secret'] == $secret){
                                     return True;
                                 }
@@ -43,8 +43,8 @@ class BotController extends Controller
 
     public function actionCallback()
     {
-        $api = new \ATehnix\VkClient\Client();
-        $token = require(__DIR__ . '/../config/token.php');
+        $api = new \ATehnix\VkClient\Client(); 
+        $token = require(Yii::getAlias('@app') . '/config/token.php');
         $api->setDefaultToken($token);
         
         $request = Yii::$app->request->getBodyParams();

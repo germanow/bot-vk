@@ -19,7 +19,8 @@ class apiTest extends \Codeception\Test\Unit
     /** @test */
     public function tokenConfirmation()
     {
-        $json = ['type' => 'confirmation', 'group_id' => '146639882'];
+        $secretKey = require(Yii::getAlias('@app') . '/config/secretKey.php');
+        $json = ['type' => 'confirmation', 'group_id' => '146639882', 'secret' => $secretKey];
         $token_confirmation = '6e6e3549';
         $this->tester->sendPOST('/bot/callback', $json);
         $this->tester->seeResponseCodeIs(200);
@@ -30,10 +31,19 @@ class apiTest extends \Codeception\Test\Unit
     /** @test */
     public function otherResponseIsOk()
     {
-        $json = ['type' => 'notConfirmation', 'group_id' => '146639882'];
+        $secretKey = require(Yii::getAlias('@app') . '/config/secretKey.php');
+        $json = ['type' => 'notConfirmation', 'group_id' => '146639882', 'secret' => $secretKey];
         $this->tester->sendPOST('/bot/callback', $json);
         $this->tester->seeResponseCodeIs(200);
         $this->tester->seeResponseContains('ok');
         
+    }
+    
+    /** @test */
+    public function secretKey()
+    {
+        $json = ['type' => 'Confirmation'];
+        $this->tester->sendPOST('/bot/callback', $json);
+        $this->tester->seeResponseCodeIs(403);    
     }
 }
