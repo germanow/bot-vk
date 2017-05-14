@@ -7,9 +7,14 @@ $params = array_merge(
 $config = [
     'id' => 'bot-vk-console',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log','queue'],
     'controllerNamespace' => 'app\commands',
     'components' => [
+        'queue' => [
+            'class' => \zhuravljov\yii\queue\redis\Queue::class,
+            'redis' => 'redis',
+            'channel' => 'queue',
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],

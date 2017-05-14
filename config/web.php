@@ -7,8 +7,13 @@ $params = array_merge(
 $config = [
     'id' => 'bot-vk',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log','queue'],
     'components' => [
+        'queue' => [
+            'class' => \zhuravljov\yii\queue\redis\Queue::class,
+            'redis' => 'redis',
+            'channel' => 'queue',
+        ],
         'request' => [
             'cookieValidationKey' => md5('fqdFw42Q'),
             'parsers' => [

@@ -2,4 +2,5 @@
 *-local.php
 token.php
 secretKey.php
+redisPass.php
 !.gitignore
